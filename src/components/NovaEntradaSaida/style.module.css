@@ -1,0 +1,38 @@
+.entrada_saida{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 5rem;
+    box-shadow: 2px 2px 10px #00000034;
+    
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.check input {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.labels{
+    display: flex;
+    align-items: center;
+}
+
+.button{
+    background-color: rgb(114, 235, 130);
+    border: none;
+    height: 2.5rem;
+    width: 7rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.entradas {
+    display: flex;
+    flex-direction: column;
+}

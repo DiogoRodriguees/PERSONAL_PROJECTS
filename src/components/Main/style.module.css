@@ -1,0 +1,12 @@
+.main{
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.header{
+    display: flex;
+    gap: 30px;
+}

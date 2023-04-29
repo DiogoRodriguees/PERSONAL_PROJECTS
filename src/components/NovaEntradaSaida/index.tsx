@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./style.module.css";
-import { Formik } from "formik";
+import { Field, Form, Formik } from "formik";
+import api from "../../api/api";
+import EntradaSaida from "../EntradaSaida";
 
 type Formulario = {
     valor: number;
@@ -9,27 +11,33 @@ type Formulario = {
 };
 
 function NovaEntradaSaida() {
-    function testarSubmissao(values: any) {
-        console.log(values);
-        alert("teste");
-    }
+    const testarSubmissao = async (values: Formulario) => {
+        try {
+            if (values.tipo == "saida") {
+                await api.post("/saida", values);
+            } else {
+                await api.post("/entrada", values);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+        window.location.reload();
+    };
 
     return (
         <Formik
             onSubmit={testarSubmissao}
             initialValues={{
-                valor: "",
+                valor: 0,
                 descricao: "",
-                tipo: "",
+                tipo: "saida",
             }}
-            component={({ values }) => (
-                <form
-                    onSubmit={testarSubmissao}
-                    className={classes.entrada_saida}
-                >
+            component={({ values, handleChange }) => (
+                <Form className={classes.entrada_saida}>
                     <div className={classes.entradas}>
                         <label htmlFor="descricao">Descriçao</label>
-                        <input
+                        <Field
                             type="text"
                             name="descricao"
                             value={values.descricao}
@@ -37,29 +45,41 @@ function NovaEntradaSaida() {
                     </div>
                     <div className={classes.entradas}>
                         <label htmlFor="valor">Valor</label>
-                        <input
-                            type="text"
+                        <Field
+                            type="number"
                             name="valor"
                             value={values.valor}
-                            onChange={() => values.valor}
+                            // onChange={() => values.valor}
                         />
                     </div>
                     <div className={classes.check}>
                         <div className={classes.labels}>
                             <input
                                 type="checkbox"
-                                name="saida"
-                                value={"saida"}
+                                name="tipo"
+                                value={values.tipo}
+                                onClick={() =>
+                                    (values.tipo =
+                                        values.tipo == "saida"
+                                            ? "entrada"
+                                            : "saida")
+                                }
                             />
                             <label htmlFor="saida">saida</label>
                         </div>
                     </div>
-                    <input className={classes.button} type="submit" name="adicionar" value="Adicionar" />
-                    <label htmlFor="adicionar"></label>
-                </form>
+                    <button
+                        className={classes.button}
+                        type="submit"
+                        name="adicionar"
+                        value="Adicionar"
+                    >
+                        Adicionar
+                    </button>
+                </Form>
             )}
         />
-    ); 
+    );
 }
 
 export default NovaEntradaSaida;

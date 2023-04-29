@@ -4,3 +4,8 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+
+body {
+    background: url("./img/background.jpg") no-repeat;
+    width: 100vw;
+}

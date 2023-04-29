@@ -9,9 +9,9 @@ const icons = {
 };
 
 type informcacoes = {
-    descricao: String;
+    descricao: string;
     valor: number;
-    tipo: String;
+    tipo: string;
 };
 
 function Item({ descricao, tipo, valor }: informcacoes) {
@@ -19,7 +19,7 @@ function Item({ descricao, tipo, valor }: informcacoes) {
         <div>
             <div className={classes.titulo_colunas}>
                 <p className={classes.descricao}>{descricao}</p>
-                <p className={classes.valor}>R$ {valor}</p>
+                <p className={classes.valor}>R$ {valor},00</p>
                 <p className={classes.tipo}>
                     {tipo === "saida" ? icons.saida : icons.entrada}
                 </p>

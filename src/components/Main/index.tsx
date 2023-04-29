@@ -7,9 +7,14 @@ import classes from "./style.module.css";
 import { useEffect, useState } from "react";
 
 type EntradaSaidaType = {
-    descricao: String;
+    descricao: string;
     valor: number;
-    
+};
+
+type historicoItems = {
+    valor: number;
+    descricao: string;
+    tipo: string;
 };
 
 function Main() {
@@ -18,6 +23,8 @@ function Main() {
     const [valorTotalDeEntradas, setValorTotalDeEntradas] = useState<number>(0);
     const [valorTotalDeSaidas, setValorTotalDeSaidas] = useState<number>(0);
 
+    const [busca, setBusca] = useState("");
+    const [historico, setHistorico] = useState<historicoItems[]>([]);
     const gerarTotalDeEntradas = async () => {
         let total = 0;
         entradas.map((item) => {
@@ -38,8 +45,8 @@ function Main() {
         try {
             const { data } = await api.get("/entradas");
             setEntradas(data);
-            
-            console.log(data);
+
+            // console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -49,25 +56,38 @@ function Main() {
         try {
             const { data } = await api.get("/saidas");
             setSaidas(data);
-            
+
+            // console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const buscarHistorico = async () => {
+        try {
+            const { data } = await api.get(`/historico?descricao=${busca}`);
+
+            setHistorico(data);
+
             console.log(data);
         } catch (error) {
             console.log(error);
         }
     };
-    
+
     useEffect(() => {
+        buscarHistorico();
         buscarTodasEntradas();
         buscarTodasSaidas();
-        
     }, []);
 
     useEffect(() => {
-        gerarTotalDeEntradas()
-        gerarTotalDeSaidas()
-        
+        buscarHistorico();
+    }, [busca]);
+    useEffect(() => {
+        gerarTotalDeEntradas();
+        gerarTotalDeSaidas();
     }, [entradas, saidas]);
-
 
     return (
         <div className={classes.main}>
@@ -77,14 +97,29 @@ function Main() {
                     valor={valorTotalDeEntradas}
                     tipo="entrada"
                 />
-                <EntradaSaida titulo="Saida" valor={valorTotalDeSaidas} tipo="saida" />
-                <Total valor={valorTotalDeEntradas - valorTotalDeSaidas}/>
+
+                <EntradaSaida
+                    titulo="Saida"
+                    valor={valorTotalDeSaidas}
+                    tipo="saida"
+                />
+                <Total valor={valorTotalDeEntradas - valorTotalDeSaidas} />
             </div>
             <div>
                 <NovaEntradaSaida />
             </div>
             <div>
-                <Resumo />
+                <div className={classes.buscar_container}>
+                    <input
+                        type="text"
+                        placeholder="Buscar por descrição"
+                        value={busca}
+                        onChange={(e) => setBusca(e.target.value)}
+                    />
+                </div>
+            </div>
+            <div>
+                <Resumo historico={historico} />
             </div>
         </div>
     );

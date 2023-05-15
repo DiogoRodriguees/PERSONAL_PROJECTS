@@ -31,7 +31,7 @@ function NovaEntradaSaida() {
             initialValues={{
                 valor: 0,
                 descricao: "",
-                tipo: "saida",
+                tipo: "entrada",
             }}
             component={({ values, handleChange }) => (
                 <Form className={classes.entrada_saida}>

@@ -33,3 +33,9 @@
     
     border: 1px solid rgb(187, 187, 187);
 }
+
+.buscar_container input:focus {
+    border: 1px solid rgb(114, 235, 130);
+    box-shadow: 0 0 0 0;
+    outline: 1px solid rgb(114, 235, 130);
+}

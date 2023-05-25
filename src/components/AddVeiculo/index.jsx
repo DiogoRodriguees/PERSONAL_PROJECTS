@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { BsPlusCircleFill } from "react-icons/bs";
+// import { BsPlusCircleFill } from "react-icons/bs";
 
 import Modal from "../Modal";
 
 import "./style.css";
 
-export default function AddVeiculo(adicionarVeiculo) {
+export default function AddVeiculo() {
     const [novoVeiculo, setNovoVeiculo] = useState(false);
 
     function adicionarVeiculo() {

@@ -1,9 +1,14 @@
+/* Formik e react Hooks */
 import { Formik, Field, Form } from "formik";
 import { useState } from "react";
+
+/* Server */
 import { api } from "../../services/api";
 
+/* Components */
 import ConfirmaDelete from "../ConfirmDeleteModal";
 
+/* Estilos */
 import "./style.css";
 
 export default function Modal({
@@ -17,18 +22,9 @@ export default function Modal({
     editar = false,
 }) {
     const [isVendido, setVendido] = useState("Não Vendido");
-    const [tipoDeInput, setTipoDeInput] = useState("select");
-    const [marcas, setMarcas] = useState([
-        "Chevrolet",
-        "Ford",
-        "Fiat",
-        "Volkswagem",
-        "Porsche",
-        "Volvo",
-        "Toyota",
-    ]);
     const [confirmaDelete, setConfirmaDelete] = useState(false);
 
+    /* Criar um novo veiculo */
     const addVeiculo = async (veiculo) => {
         try {
             const { data } = await api.post(`/create`, veiculo);
@@ -38,6 +34,7 @@ export default function Modal({
         }
     };
 
+    /* Editar o veiculo com o ID informado */
     const editarVeiculo = async (veiculo) => {
         try {
             const { data } = await api.put(`/cars/id?id=${id}`, veiculo);
@@ -47,6 +44,7 @@ export default function Modal({
         }
     };
 
+    /* Função de submissão do FORMIK */
     function onSubmit(values) {
         let novoVeiculo = {
             veiculo: values.veiculo,
@@ -117,32 +115,27 @@ export default function Modal({
                             <div className="informacoes-container">
                                 <Field
                                     type="text"
-                                    name="name"
+                                    name="veiculo"
                                     placeholder="Veiculo"
                                     className="input"
                                 />
                                 <Field
                                     type="number"
-                                    name="year"
+                                    name="ano"
                                     placeholder="Ano"
                                     className="input"
                                 />
 
                                 <Field
-                                    component={tipoDeInput}
                                     type="text"
-                                    name="brand"
+                                    name="marca"
                                     placeholder="Marca"
                                     className="input-marca"
-                                >
-                                    {marcas.map((marca) => (
-                                        <option value={marca}>{marca}</option>
-                                    ))}
-                                </Field>
+                                ></Field>
 
                                 <Field
                                     type="checkbox"
-                                    name="sold"
+                                    name="vendido"
                                     className="nao-vendido"
                                     onClick={() => {
                                         alteraBotao(values.vendido);
@@ -159,7 +152,7 @@ export default function Modal({
                                 <Field
                                     component="textarea"
                                     type="textarea"
-                                    name="description"
+                                    name="desc"
                                     className="box-descricao"
                                 />
                             </div>

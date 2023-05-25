@@ -10,10 +10,14 @@ import "./App.css";
 function App() {
     const [list, setList] = useState([]);
 
-    const getList = async () => {
+    const updateList = async (param) => {
+        setList(param);
+    };
+
+    const getList = async (param = "") => {
         try {
-            const { data } = await api.get(`/cars`);
-            setList(data);
+            const { data } = await api.get(`/cars/find?find=${param}`);
+            updateList(data);
             console.log(data);
         } catch (error) {
             console.log(error);
@@ -22,14 +26,14 @@ function App() {
 
     useEffect(() => {
         getList();
-    }, []); 
+    }, []);
 
     return (
         <div className="container-app-externo">
             <Header buscarVeiculo={getList} />
 
             <div className="container-app">
-                <AddVeiculo />
+                <AddVeiculo/>
 
                 <List list={list} />
             </div>

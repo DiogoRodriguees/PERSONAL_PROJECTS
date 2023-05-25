@@ -48,11 +48,11 @@ export default function CardDetails({
                     fecharModal={editarVeiculo}
                     id={id}
                     editar={true}
-                    name={nomeDoCarro}
-                    brand={marca}
-                    year={ano}
-                    description={details}
-                    sold={vendido}
+                    veiculo={nomeDoCarro}
+                    marca={marca}
+                    ano={ano}
+                    desc={details}
+                    vendido={vendido}
                 />
             )}
         </div>

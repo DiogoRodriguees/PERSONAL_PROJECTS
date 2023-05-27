@@ -5,7 +5,7 @@ import Item from "../Item";
 import api from "../../api/api";
 
 type historicoItems = {
-    descricao: String;
+    descricao: string;
     valor: number;
     tipo: string;
 };

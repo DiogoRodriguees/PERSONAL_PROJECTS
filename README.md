@@ -1,6 +1,6 @@
 # Projeto Auto HK - Frontend
 
-Esse projeto foi criado para dar uma interfaace para o progama. As atualizações do projetos serão adicionas assim que finalizadas. As versões anteriores serão mantidas para visualização do desenvolvimento do projeto.
+Esse projeto foi criado para dar uma interface para o progama. As atualizações do projetos serão adicionas assim que finalizadas. As versões anteriores serão mantidas para visualização do desenvolvimento do projeto.
 
 ## Tecnologias e Bibliotecas utilizadas
 

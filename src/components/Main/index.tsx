@@ -43,10 +43,10 @@ function Main() {
 
     const buscarTodasEntradas = async () => {
         try {
-            const { data } = await api.get("/entradas");
+            const { data } = await api.get("/buscarEntradas");
             setEntradas(data);
 
-            // console.log(data);
+            console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -54,7 +54,7 @@ function Main() {
 
     const buscarTodasSaidas = async () => {
         try {
-            const { data } = await api.get("/saidas");
+            const { data } = await api.get("/buscarSaidas");
             setSaidas(data);
 
             // console.log(data);

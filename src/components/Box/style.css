@@ -1,0 +1,13 @@
+.box-container {
+    width: 50%;
+    height: 70vh;
+}
+
+@media (max-width: 600px){
+    .box-container{
+       width: 100% ;
+       height: 500px;
+       display: flex;
+       flex-direction: column;
+    }
+}

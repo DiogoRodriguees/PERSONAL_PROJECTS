@@ -1,0 +1,42 @@
+.busca-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-top: 10px;
+    padding: 10px 0px;
+
+    border-bottom: 1px solid #000;
+}
+
+.busca-container h2{
+    font-family: sans-serif;
+}
+
+.add-veiculo {
+  height: 40px;
+  width: 100px;
+
+  border: none;
+  border-radius: 3px;
+
+  cursor: pointer;
+  background-color: #307fff;
+
+  color: #f2f2f2;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.add-veiculo:hover {
+  color: #307fff;
+  border: 1px solid #307fff;
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 600px){
+  .busca-container{
+    border: none;
+  }
+}

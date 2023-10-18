@@ -1,0 +1,21 @@
+.resumo {
+    background-color: #fff;
+    box-shadow: 2px 2px 10px #00000034;
+    padding: 0 1rem;
+}
+
+
+.titulo_colunas{
+    display: flex;
+    height: 3rem;
+    align-items: center;
+}
+
+.descricao, .valor{
+    width: 20rem;
+}
+
+.tipo{
+    width: 4rem;
+    text-align: center;
+}

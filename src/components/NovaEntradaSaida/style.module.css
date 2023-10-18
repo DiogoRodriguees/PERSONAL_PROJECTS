@@ -1,0 +1,56 @@
+.entrada_saida {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 5rem;
+    border-radius: 5px;
+
+    box-shadow: 2px 2px 10px #00000034;
+    background-color: #fff;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.check input {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.labels {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    background-color: rgb(65, 177, 80);
+    border: none;
+    height: 2.5rem;
+    width: 7rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    font-size: 1rem;
+}
+
+.button:hover{
+    border: 1px solid rgb(65, 177, 80);
+    background-color: #f2f2f2;
+    color: rgb(65, 177, 80);
+    
+}
+
+.entradas {
+    display: flex;
+    flex-direction: column;
+}
+
+.entradas input:focus {
+    border: 1px solid rgb(65, 177, 80);
+    box-shadow: 0 0 0 0;
+    outline: 1px solid rgb(65, 177, 80);
+}
